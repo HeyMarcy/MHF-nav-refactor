@@ -1,0 +1,58 @@
+@tailwind base;
+
+@layer base {
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  code::before {
+    content: ' `';
+  }
+  code::after {
+    content: '` ';
+  }
+  code {
+    @apply font-semibold text-indigo-400;
+  }
+  h1 {
+    @apply mt-0 text-4xl font-normal leading-normal text-gray-800;
+  }
+  h2 {
+    @apply mt-0 text-3xl font-normal leading-normal text-gray-800;
+  }
+  h3 {
+    @apply mt-0 text-2xl font-normal leading-normal text-gray-800;
+  }
+  h4 {
+    @apply mt-0 text-xl font-normal leading-normal text-gray-800;
+  }
+  h5 {
+    @apply mt-0 text-lg font-normal leading-normal text-gray-800;
+  }
+  p {
+    @apply mt-0 text-sm font-normal leading-normal text-gray-800;
+  }
+  a {
+    @apply text-blue-600;
+  }
+}
+
+@tailwind components;
+.bg-stripes-white {
+  --stripes-color: hsla(0, 0%, 100%, 0.4);
+}
+.bg-stripes {
+  background-image: linear-gradient(
+    45deg,
+    var(--stripes-color) 12.5%,
+    transparent 12.5%,
+    transparent 50%,
+    var(--stripes-color) 50%,
+    var(--stripes-color) 62.5%,
+    transparent 62.5%,
+    transparent 100%
+  );
+  background-size: 5.66px 5.66px;
+}
+
+@tailwind utilities;
