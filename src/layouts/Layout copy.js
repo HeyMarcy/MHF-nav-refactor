@@ -1,5 +1,5 @@
 import React from 'react';
-import MobileNavBar from './MobileNavBar';
+// import MobileNavBar from './MobileNavBar';
 // import { Switch, Route } from 'react-router-dom';
 // import { routes } from './routes';
 import NavList from '../components/NavList';
