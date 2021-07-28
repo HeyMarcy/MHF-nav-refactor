@@ -1,9 +1,8 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { routes } from './routes';
+import MobileNavBar from './MobileNavBar';
+// import { Switch, Route } from 'react-router-dom';
+// import { routes } from './routes';
 import NavList from '../components/NavList';
-
-const LARGEBREAKPOINT = 620;
 
 const viewportContext = React.createContext({});
 
@@ -32,37 +31,35 @@ const useViewport = () => {
   return { width, height };
 };
 
+function ToggleButton({ children, ...props }) {
+  // const { on, toggle } = useToggle();
+  return (
+    <button type="button" {...props}>
+      {children}
+    </button>
+  );
+}
 const MobileComponent = () => (
-  <div className="sticky top-0 bg-white border-b border-gray-200 z-30 ">
-    <button type="button">menu</button>
+  <div className="sticky top-0 bg-white border-b border-gray-200 z-30">
+    {/* <ToggleButton>X</ToggleButton> */}
+    <button type="button">X</button>
   </div>
 );
+// const DesktopComponent = () => <p>"Wow, your screen is big!"</p>;
 
-// const DisplayHeaderInMobile = () => {
-//   const { width } = useViewport();
+const MyComponent = () => {
+  const { width } = useViewport();
+  const breakpoint = 420;
 
-//   return width < LARGEBREAKPOINT ? <MobileComponent /> : null;
-// };
+  return width < breakpoint ? <MobileComponent /> : null;
+};
 
-export function MainLayout() {
-  const getRoutes = routes.map(prop => {
-    return (
-      <Route
-        exact
-        path={prop.path}
-        render={() => <prop.component />}
-        key={prop.key}
-      />
-    );
-  });
+export default function Layout() {
   return (
     <ViewportProvider>
       <div className="relative">
-        <div className="block sm:hidden">
-          <MobileComponent />
-        </div>
+        <MyComponent />
         <NavList />
-        <Switch>{getRoutes}</Switch>
       </div>
     </ViewportProvider>
   );
