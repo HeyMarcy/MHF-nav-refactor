@@ -19,7 +19,8 @@ const ViewportProvider = ({ children }) => {
     window.addEventListener('resize', handleWindowResize);
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
-
+  console.log('width: ', width);
+  console.log('height: ', height);
   return (
     <viewportContext.Provider value={{ width, height }}>
       {children}
@@ -45,6 +46,7 @@ const MobileComponent = () => (
 // };
 
 export function MainLayout() {
+  const [displayMenu] = React.useState(false);
   const getRoutes = routes.map(prop => {
     return (
       <Route
@@ -61,7 +63,7 @@ export function MainLayout() {
         <div className="block sm:hidden">
           <MobileComponent />
         </div>
-        <NavList />
+        <NavList displayMenu={displayMenu} />
         <Switch>{getRoutes}</Switch>
       </div>
     </ViewportProvider>
