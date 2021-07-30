@@ -32,8 +32,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   });
 
   return (
-    <div className="lg:w-72">
-      {/* Sidebar backdrop (mobile only) */}
+    <div className="lg:w-72 sm:mt-12">
+      {/* Sidebar backdrop */}
       <div
         className={`absolute inset-0 bg-white bg-opacity-100 z-40 md:hidden md:z-auto transition-opacity duration-200 ${
           sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -48,8 +48,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           sidebarOpen ? 'translate-x-0' : '-translate-x-72'
         }`}
       >
-        {/* Sidebar header */}
-
         <NavList />
       </div>
     </div>

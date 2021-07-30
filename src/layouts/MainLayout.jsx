@@ -1,10 +1,56 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
 import { Switch, Route } from 'react-router-dom';
 import { routes } from './routes';
-import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
 import Logo from '../components/Logo';
+import FairviewLogo from '../assets/FairviewLogo';
 
+const ContainerGrid = styled.div`
+  display: grid;
+  text-align: center;
+  grid-gap: 0.25rem;
+  transition: all 0.25s ease-in-out;
+  grid-template-columns: 150px auto;
+  grid-template-rows: 100px auto;
+  grid-template-areas:
+    'logo nav'
+    'main main';
+  color: white;
+  @media (min-width: 551px) {
+    display: block;
+  }
+`;
+const LogoContainer = styled.header`
+  grid-area: logo;
+  width: 100px;
+  z-index: 60px;
+  @media (min-width: 551px) {
+    position: absolute;
+  }
+`;
+
+const MobileHeaderContainer = styled.header`
+  background: #a6b8b9;
+  grid-area: nav;
+  padding: 0.25rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-color: white;
+  @media (min-width: 551px) {
+    display none;
+  }
+`;
+
+const Main = styled.main`
+  background: #1f2128;
+  color: white;
+  grid-area: main;
+  padding: 0.25rem;
+  display: flex;
+`;
 // const LARGEBREAKPOINT = 620;
 
 // const viewportContext = React.createContext({});
@@ -33,12 +79,6 @@ import Logo from '../components/Logo';
 //   return { width, height };
 // };
 
-// const MobileHeader = () => (
-//   <div className="sticky top-0 bg-white border-b border-gray-200 z-30 ">
-//     <button type="button">menu</button>
-//   </div>
-// );
-
 export function MainLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const getRoutes = routes.map(prop => {
@@ -52,39 +92,43 @@ export function MainLayout() {
     );
   });
   return (
-    <div className="relative flex flex-col md:flex-row">
-      <div>
-        {/* Hamburger button */}
-        {/* <button
-          type="button"
-          className="text-gray-500 hover:text-gray-600 absolute top-3 right-3 z-50 md:hidden"
-          aria-controls="sidebar"
-          aria-expanded={sidebarOpen}
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-        >
-          <span className="sr-only">toggle sidebar</span>
-          <svg
-            className="w-6 h-6 fill-current"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect x="4" y="5" width="24" height="2" />
-            <rect x="4" y="11" width="24" height="2" />
-            <rect x="4" y="17" width="24" height="2" />
-          </svg>
-        </button> */}
-        <Logo />
-        <div className=" static block md:hidden">
-          <MobileHeader
-            sidebarOpen={sidebarOpen}
-            setSidebarOpen={setSidebarOpen}
-          />
-        </div>
-      </div>
-      <div className="flex w-full relative">
+    <ContainerGrid>
+      <LogoContainer>
+        <FairviewLogo />
+      </LogoContainer>
+      <MobileHeaderContainer>
+        <MobileHeader
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+        />
+      </MobileHeaderContainer>
+      <Main>
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <Switch>{getRoutes}</Switch>
-      </div>
-    </div>
+      </Main>
+    </ContainerGrid>
+  );
+}
+
+function MobileHeader({ sidebarOpen, setSidebarOpen }) {
+  return (
+    <button
+      type="button"
+      className="text-gray-500 hover:text-gray-600 lg:hidden z-50"
+      aria-controls="sidebar"
+      aria-expanded={sidebarOpen}
+      onClick={() => setSidebarOpen(!sidebarOpen)}
+    >
+      <span className="sr-only">Open sidebar</span>
+      <svg
+        className="w-6 h-6 fill-current"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect x="4" y="5" width="16" height="2" />
+        <rect x="4" y="11" width="16" height="2" />
+        <rect x="4" y="17" width="16" height="2" />
+      </svg>
+    </button>
   );
 }
