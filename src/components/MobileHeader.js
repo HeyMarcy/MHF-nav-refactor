@@ -5,7 +5,7 @@ function MobileHeader({ sidebarOpen, setSidebarOpen }) {
     <div className="flex justify-end bg-white">
       <button
         type="button"
-        className="text-gray-500 hover:text-gray-600 lg:hidden z-50"
+        className="text-gray-500 hover:text-gray-600 md:hidden z-50"
         aria-controls="sidebar"
         aria-expanded={sidebarOpen}
         onClick={() => setSidebarOpen(!sidebarOpen)}

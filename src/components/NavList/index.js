@@ -11,7 +11,14 @@ const NavList = ({ actions, ...props }) => {
   ];
 
   return (
-    <ul style={{ listStyle: 'none', paddingLeft: 20 }}>
+    <ul
+      style={{
+        listStyle: 'none',
+        paddingLeft: 20,
+        marginTop: 100,
+        textAlign: 'left',
+      }}
+    >
       {navItems.map(item => (
         <li key={item}>
           <h3>{item}</h3>

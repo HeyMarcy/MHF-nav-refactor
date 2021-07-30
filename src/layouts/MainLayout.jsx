@@ -4,80 +4,53 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 import { routes } from './routes';
 import Sidebar from '../components/Sidebar';
-import Logo from '../components/Logo';
 import FairviewLogo from '../assets/FairviewLogo';
 
 const ContainerGrid = styled.div`
-  display: grid;
-  text-align: center;
-  grid-gap: 0.25rem;
-  transition: all 0.25s ease-in-out;
-  grid-template-columns: 150px auto;
-  grid-template-rows: 100px auto;
-  grid-template-areas:
-    'logo nav'
-    'main main';
-  color: white;
   @media (min-width: 551px) {
-    display: block;
+    display: grid;
+    grid-template-rows: 100px auto;
+    grid-template-columns: 150px auto;
+    grid-template-areas:
+      'header main'
+      'navlist main';
   }
 `;
 const LogoContainer = styled.header`
   grid-area: logo;
   width: 100px;
-  z-index: 60px;
+  z-index: 50;
   @media (min-width: 551px) {
     position: absolute;
   }
 `;
 
-const MobileHeaderContainer = styled.header`
-  background: #a6b8b9;
-  grid-area: nav;
+const MobileHeader = styled.header`
+  grid-area: header;
   padding: 0.25rem;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
   @media (min-width: 551px) {
-    display none;
+    position: fixed;
   }
 `;
-
+const NavList = styled.nav`
+  background: lightgreen;
+  grid-area: navlist;
+  padding: 0.25rem;
+  position: absolute;
+  @media (min-width: 551px) {
+    position: fixed;
+    top: 100px;
+  }
+`;
 const Main = styled.main`
-  background: #1f2128;
-  color: white;
   grid-area: main;
   padding: 0.25rem;
   display: flex;
 `;
-// const LARGEBREAKPOINT = 620;
-
-// const viewportContext = React.createContext({});
-
-// const ViewportProvider = ({ children }) => {
-//   const [width, setWidth] = React.useState(window.innerWidth);
-//   const [height, setHeight] = React.useState(window.innerHeight);
-//   const handleWindowResize = () => {
-//     setWidth(window.innerWidth);
-//     setHeight(window.innerHeight);
-//   };
-
-//   React.useEffect(() => {
-//     window.addEventListener('resize', handleWindowResize);
-//     return () => window.removeEventListener('resize', handleWindowResize);
-//   }, []);
-//   return (
-//     <viewportContext.Provider value={{ width, height }}>
-//       {children}
-//     </viewportContext.Provider>
-//   );
-// };
-
-// const useViewport = () => {
-//   const { width, height } = React.useContext(viewportContext);
-//   return { width, height };
-// };
 
 export function MainLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -93,24 +66,28 @@ export function MainLayout() {
   });
   return (
     <ContainerGrid>
-      <LogoContainer>
-        <FairviewLogo />
-      </LogoContainer>
-      <MobileHeaderContainer>
-        <MobileHeader
+      <MobileHeader>
+        <LogoContainer>
+          <FairviewLogo />
+        </LogoContainer>
+
+        <NavToggleButton
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
         />
-      </MobileHeaderContainer>
-      <Main>
+      </MobileHeader>
+      <NavList>
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      </NavList>
+
+      <Main>
         <Switch>{getRoutes}</Switch>
       </Main>
     </ContainerGrid>
   );
 }
 
-function MobileHeader({ sidebarOpen, setSidebarOpen }) {
+function NavToggleButton({ sidebarOpen, setSidebarOpen }) {
   return (
     <button
       type="button"

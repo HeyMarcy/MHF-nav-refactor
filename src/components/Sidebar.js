@@ -32,7 +32,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   });
 
   return (
-    <div className="lg:w-72 sm:mt-12">
+    <div className="lg:w-72">
       {/* Sidebar backdrop */}
       <div
         className={`absolute inset-0 bg-white bg-opacity-100 z-40 md:hidden md:z-auto transition-opacity duration-200 ${
