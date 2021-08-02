@@ -15,7 +15,7 @@ const NavList = ({ actions, ...props }) => {
       style={{
         listStyle: 'none',
         paddingLeft: 20,
-        marginTop: 100,
+        marginTop: 20,
         textAlign: 'left',
       }}
     >

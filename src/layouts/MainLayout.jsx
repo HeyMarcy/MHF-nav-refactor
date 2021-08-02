@@ -8,7 +8,7 @@ import FairviewLogo from '../assets/FairviewLogo';
 
 const ContainerGrid = styled.div`
   display: grid;
-  grid-template-rows: 50px auto;
+  grid-template-rows: 50px 0 auto;
   grid-template-columns: 100vw;
   grid-template-areas:
     'header'
@@ -42,10 +42,10 @@ const MobileHeader = styled.header`
   }
 `;
 const NavList = styled.nav`
-  background: lightgreen;
+  background: transparent;
   grid-area: navlist;
   padding: 0.25rem;
-  position: absolute;
+
   @media (min-width: 551px) {
     position: fixed;
     top: 100px;
@@ -55,6 +55,8 @@ const Main = styled.main`
   grid-area: main;
   padding: 0.25rem;
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
 export function MainLayout() {
@@ -96,14 +98,14 @@ function NavToggleButton({ sidebarOpen, setSidebarOpen }) {
   return (
     <button
       type="button"
-      className="text-gray-500 hover:text-gray-600 lg:hidden z-50"
+      className="text-gray-500 w-12 hover:text-gray-600 md:hidden z-50 sm:hidden"
       aria-controls="sidebar"
       aria-expanded={sidebarOpen}
       onClick={() => setSidebarOpen(!sidebarOpen)}
     >
       <span className="sr-only">Open sidebar</span>
       <svg
-        className="w-6 h-6 fill-current"
+        className="w-7 h-7 fill-current"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >
