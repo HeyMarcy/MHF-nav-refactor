@@ -9,7 +9,7 @@ import FairviewLogo from '../assets/FairviewLogo';
 const ContainerGrid = styled.div`
   display: grid;
   grid-template-rows: 50px auto;
-  grid-template-columns: auto;
+  grid-template-columns: 100vw;
   grid-template-areas:
     'header'
     'navlist'
