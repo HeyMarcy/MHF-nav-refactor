@@ -7,21 +7,26 @@ import Sidebar from '../components/Sidebar';
 import FairviewLogo from '../assets/FairviewLogo';
 
 const ContainerGrid = styled.div`
+  display: grid;
+  grid-template-rows: 50px auto;
+  grid-template-columns: auto;
+  grid-template-areas:
+    'header'
+    'navlist'
+    'main';
+
   @media (min-width: 551px) {
-    display: grid;
-    grid-template-rows: 100px auto;
-    grid-template-columns: 150px auto;
+    grid-template-columns: 288px auto;
     grid-template-areas:
       'header main'
       'navlist main';
   }
 `;
 const LogoContainer = styled.header`
-  grid-area: logo;
-  width: 100px;
+  width: 50px;
   z-index: 50;
   @media (min-width: 551px) {
-    position: absolute;
+    width: 100px;
   }
 `;
 
