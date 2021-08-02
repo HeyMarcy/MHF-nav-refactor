@@ -32,7 +32,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   });
 
   return (
-    <div className="lg:w-72">
+    <div className="lg:w-72 sm:mt-12">
       {/* Sidebar backdrop */}
       <div
         className={`absolute inset-0 bg-white bg-opacity-100 z-40 md:hidden md:z-auto transition-opacity duration-200 ${
@@ -44,7 +44,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`absolute z-40 left-0 top-0 md:static md:left-auto md:top-auto md:translate-x-0 transform  overflow-y-auto md:overflow-y-auto no-scrollbar w-72 flex-shrink-0 bg-white p-4 transition-transform duration-200 ease-in-out ${
+        className={`absolute z-40 left-0 top-0 md:static md:left-auto md:top-auto md:translate-x-0 transform overflow-y-auto md:overflow-y-auto no-scrollbar w-72 flex-shrink-0 bg-white p-4 transition-transform duration-200 ease-in-out ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-72'
         }`}
       >
