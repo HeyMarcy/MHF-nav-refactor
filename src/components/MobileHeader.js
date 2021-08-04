@@ -6,11 +6,11 @@ function MobileHeader({ sidebarOpen, setSidebarOpen }) {
       <button
         type="button"
         className="text-gray-500 hover:text-gray-600 md:hidden z-50"
-        aria-controls="sidebar"
+        aria-controls="navigation"
         aria-expanded={sidebarOpen}
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
-        <span className="sr-only">Open sidebar</span>
+        <span className="sr-only">Toggle navigation</span>
         <svg
           className="w-8 h-8 fill-current"
           viewBox="0 0 24 24"

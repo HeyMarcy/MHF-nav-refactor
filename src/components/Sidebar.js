@@ -3,15 +3,15 @@ import NavList from './NavList';
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const trigger = useRef(null);
-  const sidebar = useRef(null);
+  const navigation = useRef(null);
 
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
-      if (!sidebar.current || !trigger.current) return;
+      if (!navigation.current || !trigger.current) return;
       if (
         !sidebarOpen ||
-        sidebar.current.contains(target) ||
+        navigation.current.contains(target) ||
         trigger.current.contains(target)
       )
         return;
@@ -42,8 +42,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       />
       {/* Sidebar */}
       <div
-        id="sidebar"
-        ref={sidebar}
+        id="navigation"
+        ref={navigation}
         className={`absolute mt-12 z-40 left-0 top-0 md:static md:left-auto md:top-auto md:translate-x-0 transform overflow-y-auto md:overflow-y-auto no-scrollbar w-72 flex-shrink-0 bg-white p-4 transition-transform duration-200 ease-in-out ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-72'
         }`}

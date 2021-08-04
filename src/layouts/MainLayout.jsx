@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Switch, Route } from 'react-router-dom';
@@ -20,13 +21,6 @@ const ContainerGrid = styled.div`
     grid-template-areas:
       'header main'
       'navlist main';
-  }
-`;
-const LogoContainer = styled.header`
-  width: 50px;
-  z-index: 50;
-  @media (min-width: 551px) {
-    width: 100px;
   }
 `;
 
@@ -74,11 +68,9 @@ export function MainLayout() {
   return (
     <ContainerGrid>
       <MobileHeader>
-        <LogoContainer>
-          <button type="button" onClick={() => null} className="w-32 ml-11">
-            <FairviewLogo />
-          </button>
-        </LogoContainer>
+        <Link to="/" className="z-50 w-12 sm:w-32 sm:ml-6">
+          <FairviewLogo />
+        </Link>
 
         <NavToggleButton
           sidebarOpen={sidebarOpen}
