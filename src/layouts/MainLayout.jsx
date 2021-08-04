@@ -75,7 +75,9 @@ export function MainLayout() {
     <ContainerGrid>
       <MobileHeader>
         <LogoContainer>
-          <FairviewLogo />
+          <button type="button" onClick={() => null} className="w-32 ml-11">
+            <FairviewLogo />
+          </button>
         </LogoContainer>
 
         <NavToggleButton

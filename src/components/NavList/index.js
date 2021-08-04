@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NavList = ({ actions, ...props }) => {
   const navItems = [
@@ -18,10 +19,13 @@ const NavList = ({ actions, ...props }) => {
         marginTop: 20,
         textAlign: 'left',
       }}
+      className="w-full"
     >
       {navItems.map(item => (
         <li key={item}>
-          <h3>{item}</h3>
+          <Link className=" px-1" to="/">
+            <h3>{item}</h3>
+          </Link>
         </li>
       ))}
     </ul>
