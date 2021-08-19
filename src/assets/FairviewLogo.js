@@ -2,6 +2,7 @@ import React from 'react';
 
 const FairviewLogo = props => (
   <svg {...props} viewBox="0 0 126 119" xmlns="http://www.w3.org/2000/svg">
+    <title>Fairview Logo</title>
     <g fill="none" fillRule="evenodd">
       <path fill="#FFB700" d="M0 119h126V0H0z" />
       <g fillRule="nonzero">

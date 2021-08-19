@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { routes } from './routes';
 import Sidebar from '../components/Sidebar';
@@ -66,9 +66,9 @@ export function MainLayout() {
   return (
     <ContainerGrid>
       <MobileHeader>
-        <Link to="/" className="z-50 w-12 sm:w-32 sm:ml-6">
+        <NavLink to="/" className="z-50 w-12 sm:w-32 sm:ml-6">
           <FairviewLogo />
-        </Link>
+        </NavLink>
 
         <NavToggleButton
           sidebarOpen={sidebarOpen}
