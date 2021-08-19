@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const NavList = ({ actions, sidebarOpen, ...props }) => {
+const NavList = ({ sidebarOpen }) => {
   const navItems = [
     'Get Care',
     'Find a Location',
