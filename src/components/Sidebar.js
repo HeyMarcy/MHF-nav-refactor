@@ -2,19 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import NavList from './NavList';
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
-  const trigger = useRef(null);
   const navigation = useRef(null);
 
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
-      if (!navigation.current || !trigger.current) return;
-      if (
-        !sidebarOpen ||
-        navigation.current.contains(target) ||
-        trigger.current.contains(target)
-      )
-        return;
+      if (!navigation.current) return;
+      if (!sidebarOpen || !navigation.current.contains(target)) return;
       setSidebarOpen(false);
     };
     document.addEventListener('click', clickHandler);
@@ -48,7 +42,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           sidebarOpen ? 'translate-x-0' : '-translate-x-72'
         }`}
       >
-        <NavList />
+        <NavList sidebarOpen={sidebarOpen} />
       </div>
     </div>
   );

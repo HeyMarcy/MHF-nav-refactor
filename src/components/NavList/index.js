@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const NavList = ({ actions, ...props }) => {
+const NavList = ({ actions, sidebarOpen, ...props }) => {
   const navItems = [
     'Get Care',
     'Find a Location',
@@ -10,9 +10,17 @@ const NavList = ({ actions, ...props }) => {
     'Pay a Bill',
     'Sign in to MyChart',
   ];
+  const navListRef = useRef(null);
+
+  useEffect(() => {
+    if (sidebarOpen) {
+      navListRef.current.focus();
+    }
+  }, [sidebarOpen]);
 
   return (
     <ul
+      ref={navListRef}
       style={{
         listStyle: 'none',
         paddingLeft: 20,
@@ -23,7 +31,7 @@ const NavList = ({ actions, ...props }) => {
     >
       {navItems.map(item => (
         <li key={item}>
-          <Link className=" px-1" to="/">
+          <Link className="px-1" to="/LandingPage">
             <h3>{item}</h3>
           </Link>
         </li>

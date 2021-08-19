@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-import { Switch, Route } from 'react-router-dom';
 import { routes } from './routes';
 import Sidebar from '../components/Sidebar';
 import FairviewLogo from '../assets/FairviewLogo';
